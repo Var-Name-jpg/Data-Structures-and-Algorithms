@@ -1,0 +1,9 @@
+# Bad Data
+# Issue: The submarine is too close to the edge
+Carrier, 5, h, 0, 0
+Carrier, 5, v, 1, 1
+Battleship, 4, v, 6, 3
+Destroyer, 3, h, 0, 2
+Submarine, 3, v, 5, 8
+Patrol Boat, 2, h, 8, 9
+Patrol Boat, 2, v, 7, 2

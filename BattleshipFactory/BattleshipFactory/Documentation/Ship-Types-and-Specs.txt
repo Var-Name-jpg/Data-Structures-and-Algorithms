@@ -1,0 +1,23 @@
+Each ship type has it's own specific parameters.
+
+Available Ship Types:
+- Carrier
+- Battleship
+- Destroyer
+- Submarine
+- Patrol Boat
+
+Ship Sizes:
+- Carrier: 5 Tiles
+- Battleship: 4 Tiles
+- Destroyer: 3 Tiles
+- Submarine: 3 Tiles
+- Patrol Boat: 2 Tiles
+
+Ships can be placed either vertically or horizontally.
+
+Ships cannot go out of bounnds or intersect with other ships.
+
+The playing field is 10x10 tiles:
+- Starts at (0, 0)
+- Ends at (9, 9)
