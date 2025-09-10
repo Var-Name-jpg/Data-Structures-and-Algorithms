@@ -7,7 +7,7 @@ namespace BattleshipFactory {
 		}
 
 		public bool AllSunk() {
-			return Fleet.Any();
+			return !Fleet.Any();
 		}
 	}
 }

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "H/JtxH3Dh1Y=",
+  "success": true,
+  "projectFilePath": "/home/eclipse/Coding-Projects/Data-Structures-and-Algorithms/Battleship-Project/BattleshipFactory.csproj",
+  "expectedPackageFiles": [
+    "/home/eclipse/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.8/microsoft.aspnetcore.app.ref.9.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

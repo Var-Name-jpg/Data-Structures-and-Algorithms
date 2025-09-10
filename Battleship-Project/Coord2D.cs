@@ -66,7 +66,7 @@ namespace BattleshipFactory {
 
             if (str.StartsWith("(") && str.EndsWith(")")) {
                 str = str.Substring(1, str.Length - 2);
-                var parts = str.Split(,);
+                var parts = str.Split(',');
 
                 if (parts.Length == 2 &&
                         int.TryParse(parts[0].Trim(), out int xVal) &&

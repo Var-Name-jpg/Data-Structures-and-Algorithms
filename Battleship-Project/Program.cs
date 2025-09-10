@@ -9,6 +9,7 @@ namespace BattleshipFactory {
 
 			ShipFactory shipFact = new ShipFactory();
 			List<Ship> fleet = new List<Ship>();
+			Game game = new Game(fleet);
 
 			// Check for command line arguments
 			if (args.Length >= 2) {
@@ -103,7 +104,14 @@ namespace BattleshipFactory {
 						 throw new Exception("Invalid Command! Please try again...");
 					 }
 
-					if (fleet.All(ship => ship.IsDead())) { Console.WriteLine("You Won!"); break; }
+					if (game.AllSunk()) { Console.WriteLine("You Won!"); break; }
+
+					for (int i = 0; i < fleet.Count; i++) {
+						if (fleet[i].IsDead()) {
+							Console.WriteLine($"{fleet[i].ShipType} Sunk!");
+							fleet.RemoveAt(i);
+						}
+					}
 					
 				} catch (Exception ex) {
 					Console.WriteLine(ex.Message);
