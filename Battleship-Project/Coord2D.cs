@@ -37,6 +37,9 @@ namespace BattleshipFactory {
 				if (parts.Length == 2 &&
 						int.TryParse(parts[0].Trim(), out int xVal) &&
 						int.TryParse(parts[1].Trim(), out int yVal)) {
+					if (xVal < 0 || xVal > 9) { return false; }
+					if (yVal < 0 || yVal > 9) { return false; }
+
 					coord = new Coord2D(xVal, yVal);
 					return true;
 				}
