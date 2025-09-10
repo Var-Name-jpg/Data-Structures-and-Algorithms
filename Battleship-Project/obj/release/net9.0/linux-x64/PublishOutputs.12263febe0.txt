@@ -1,2 +1,0 @@
-/home/eclipse/Coding-Projects/Data-Structures-and-Algorithms/Battleship-Project/bin/release/net9.0/linux-x64/publish/BattleshipFactory.pdb
-/home/eclipse/Coding-Projects/Data-Structures-and-Algorithms/Battleship-Project/bin/release/net9.0/linux-x64/publish/BattleshipFactory
