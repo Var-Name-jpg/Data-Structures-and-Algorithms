@@ -57,20 +57,22 @@ namespace BattleshipFactory {
 			return Points.Contains(point);
 		}
 
-		public void TakeDamage(Coord2D point) {
+		public bool TakeDamage(Coord2D point) {
 			if (CheckIfHit(point)) {
 				foreach (Coord2D pt in this.DamagedPoints) {
 					if (pt.Equals(point)) {
-						return;
+						return false;
 					}
 				}
 				this.DamagedPoints.Add(point);
 				this.Length -= 1;
+
+				if (this.Length < 0) { this.Length = 0; }
+
+				Console.WriteLine($"Hit! You hit a {ShipType()}!");
+				return true;
 			}
-			if (this.Length < 0) {
-				this.Length = 0;
-			}
-			Console.WriteLine(this.GetInfo());
+			return false;
 		}
 	}
 }

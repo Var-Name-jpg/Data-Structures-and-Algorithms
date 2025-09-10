@@ -63,37 +63,56 @@ namespace BattleshipFactory {
 					}
 				}
 			}
+
+			Console.Clear();
 			
 			foreach (Ship ship in fleet) {
 				ship.Points = shipFact.GenerateShipPoints(ship.Position, ship.Direction, ship.Length);
-				Console.Clear();
 				Console.WriteLine(ship.GetInfo());
-				Console.Write("Press any key to continue...");
-				Console.ReadKey();
 			}
+
+			Console.WriteLine("Press any key to continue...");
+			Console.ReadKey();
 
 			string input = string.Empty;
 			Coord2D tempCoord = new Coord2D(0, 0);
+			bool _gameOver = false;
 
-			while (true) {
+			while (!_gameOver) {
+
 				try {
 					Console.Clear();
-					Console.WriteLine("Input a set of coordinates:\nFormat: '(x,y)'");
+					Console.WriteLine("Input a command (info, (x,y), exit)...");
 					Console.Write(">> ");
 					input = Console.ReadLine();
 
 					if (input.ToLower() == "exit") { break; }
+					else if (input.ToLower() == "info") {
+						foreach (Ship ship in fleet) {
+							Console.WriteLine(ship.GetInfo());
+						}
+						Console.WriteLine("Press any key to continue...");
+						Console.ReadKey();
+						continue;
+					} else if (tempCoord.TryParse(input, out Coord2D hitCoord)) {
+						 if (!fleet.Any(ship => ship.TakeDamage(hitCoord))) { Console.WriteLine("Miss!"); }
 
-					if (tempCoord.TryParse(input, out Coord2D hitCoord)) {
-						 foreach (Ship ship in fleet) {
-							 ship.TakeDamage(hitCoord);
-						 }
+						 Console.WriteLine("Press any key to continue...");
+						 Console.ReadKey();
+					 } else {
+						 throw new Exception("Invalid Command! Please try again...");
 					 }
-					Console.ReadKey();
+
+					if (fleet.All(ship => ship.IsDead())) { Console.WriteLine("You Won!"); break; }
+					
 				} catch (Exception ex) {
 					Console.WriteLine(ex.Message);
+					Console.ReadKey();
 				}
 			}
+
+			Console.WriteLine("Program terminated. Press any key to exit...");
+			Console.ReadKey();
 		}
 	}
 }
