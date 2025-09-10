@@ -84,19 +84,16 @@ namespace BattleshipFactory {
 
 					if (input.ToLower() == "exit") { break; }
 
-					if (tempCoord.TryParse(input, out Coord2D hitCoord)){ Console.WriteLine("Hello!"); }
+					if (tempCoord.TryParse(input, out Coord2D hitCoord)) {
+						 foreach (Ship ship in fleet) {
+							 ship.TakeDamage(hitCoord);
+						 }
+					 }
 					Console.ReadKey();
 				} catch (Exception ex) {
 					Console.WriteLine(ex.Message);
 				}
 			}
-
-
-			// TODO:
-			// Make game loop:
-			// 	- parse points
-			// 	- check hits
-			// 	- exit when list is empty OR they type 'exit'
 		}
 	}
 }

@@ -86,9 +86,12 @@ namespace BattleshipFactory {
 				throw new Exception("Cannot Parse.. Point not on board.. Moving On");
 			} else if (int.Parse(tempVals[4]) < 0 || int.Parse(tempVals[4]) > 9) {
 				throw new Exception("Cannot Parse.. Point not on board.. Moving On");
-			}
-			else if (int.Parse((tempVals[3]) + length) > 9 || int.Parse((tempVals[4]) + length) > 9) {
-				throw new Exception("Cannot Parse.. Too Close to Edge.. Moving On");
+
+			} else if (int.Parse(tempVals[3]) + length > 9 && direction == DirectionType.Vertical) {
+				throw new Exception("Cannot Parse.. Too Close to Edge.. Moving On Vertical");
+			} else if (int.Parse(tempVals[4]) + length > 9 && direction == DirectionType.Horizontal) {
+				throw new Exception("Cannot Parse.. Too Close to Edge.. Moving On Horizontal");
+
 			} else {
 				startX = int.Parse(tempVals[3]);
 				startY = int.Parse(tempVals[4]);
@@ -138,6 +141,7 @@ namespace BattleshipFactory {
 					Console.WriteLine(ex.Message);
 				}
 			}
+			Console.ReadKey();
 
 			return ships;
 		}
