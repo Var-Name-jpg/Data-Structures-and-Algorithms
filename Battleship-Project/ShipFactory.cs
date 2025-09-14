@@ -3,159 +3,181 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace BattleshipFactory {
-	public class ShipFactory {
-		public Ship ParseShipString(string shipString, List<Ship> activeShips) {
-			char[] delimiters = new char[] {',', ' '};
-			List<string> tempVals = shipString.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).ToList();
+    /// <summary>
+    /// Responsible for creating ship instances from string input or file data.
+    /// </summary>
+    public class ShipFactory {
 
-			// Verification
-			List<string> validShipTypes = new List<string> {"carrier", "battleship", "destroyer", "submarine"  };
-			List<string> validDirectionTypes = new List<string> { "h", "horizontal", "v", "vertical" };
-			
-			// Data
-			string shipType = string.Empty;
-			DirectionType direction = DirectionType.None;
-			int length = 0;
-			int startX = 0;
-			int startY = 0;
+        /// <summary>
+        /// Parses a string describing a ship and returns a corresponding Ship object.
+        /// </summary>
+        /// <param name="shipString">The string containing ship data (type, length, direction, coordinates).</param>
+        /// <param name="activeShips">List of ships already placed on the board to check for overlap.</param>
+        /// <returns>A new Ship object if parsing is successful; otherwise, throws an exception.</returns>
+        public Ship ParseShipString(string shipString, List<Ship> activeShips) {
+            char[] delimiters = new char[] {',', ' '};
+            List<string> tempVals = shipString.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).ToList();
 
-			// Check Ship Type is Valid
-			// Check patrol boat
-			if (tempVals[0].ToLower() == "patrol" && tempVals[1].ToLower() == "boat") {
-				tempVals[0] = "patrolboat";
-				tempVals.RemoveAt(1);
-				shipType = "patrolboat";
+            // Verification
+            List<string> validShipTypes = new List<string> {"carrier", "battleship", "destroyer", "submarine"  };
+            List<string> validDirectionTypes = new List<string> { "h", "horizontal", "v", "vertical" };
+            
+            // Data
+            string shipType = string.Empty;
+            DirectionType direction = DirectionType.None;
+            int length = 0;
+            int startX = 0;
+            int startY = 0;
 
-			} else if (validShipTypes.Contains(tempVals[0].ToLower())) {
-				shipType = tempVals[0].ToLower();
+            // Check Ship Type is Valid
+            // Check patrol boat
+            if (tempVals[0].ToLower() == "patrol" && tempVals[1].ToLower() == "boat") {
+                tempVals[0] = "patrolboat";
+                tempVals.RemoveAt(1);
+                shipType = "patrolboat";
 
-			} else {
-		 		throw new Exception("Cannot Parse Ship Type.. Moving On");
-			}
+            } else if (validShipTypes.Contains(tempVals[0].ToLower())) {
+                shipType = tempVals[0].ToLower();
 
-			// Check Length is Valid
-			int tempLength = int.Parse(tempVals[1]);
+            } else {
+                throw new Exception("Cannot Parse Ship Type.. Moving On");
+            }
 
-			switch (shipType) {
-				case "carrier":
-					if (tempLength == 5) { length = 5; }
-					else { throw new Exception("Incorrect length for Carrier ship class.. Moving On.."); }
-					break;
-				case "battleship":
-					if (tempLength == 4) { length = 4; }
-					else { throw new Exception("Incorrect length for Battleship ship class.. Moving On.."); }
-					break;
-				case "destroyer":
-					if (tempLength == 3) { length = 3; }
-					else { throw new Exception("Incorrect length for Destoryer ship class.. Moving On.."); }
-					break;
-				case "submarine":
-					if (tempLength == 3) { length = 3; }	
-					else { throw new Exception("Incorrect length for Submarine ship class.. Moving On.."); }
-					break;
-				case "patrolboat":
-					if (tempLength == 2) { length = 2; }
-					else { throw new Exception("Incorrect length for Patrol Boat ship class.. Moving On.."); }
-					break;
-				default:
-					throw new Exception("Internal Error. Please reload the application.");
-			}
+            // Check Length is Valid
+            int tempLength = int.Parse(tempVals[1]);
 
-			// Check Direction is Valid
-			if (validDirectionTypes.Contains(tempVals[2])) {
-				switch (tempVals[2].ToLower()) {
-					case "v":
-						direction = DirectionType.Vertical;
-						break;
-					case "vertical":
-						direction = DirectionType.Vertical;
-						break;
-					case "h":
-						direction = DirectionType.Horizontal;
-						break;
-					case "horizontal":
-						direction = DirectionType.Horizontal;
-						break;
-				}
-			} else {
-				throw new Exception("Cannot Parse Direction.. Moving On");
-			}
+            switch (shipType) {
+                case "carrier":
+                    if (tempLength == 5) { length = 5; }
+                    else { throw new Exception("Incorrect length for Carrier ship class.. Moving On.."); }
+                    break;
+                case "battleship":
+                    if (tempLength == 4) { length = 4; }
+                    else { throw new Exception("Incorrect length for Battleship ship class.. Moving On.."); }
+                    break;
+                case "destroyer":
+                    if (tempLength == 3) { length = 3; }
+                    else { throw new Exception("Incorrect length for Destoryer ship class.. Moving On.."); }
+                    break;
+                case "submarine":
+                    if (tempLength == 3) { length = 3; }    
+                    else { throw new Exception("Incorrect length for Submarine ship class.. Moving On.."); }
+                    break;
+                case "patrolboat":
+                    if (tempLength == 2) { length = 2; }
+                    else { throw new Exception("Incorrect length for Patrol Boat ship class.. Moving On.."); }
+                    break;
+                default:
+                    throw new Exception("Internal Error. Please reload the application.");
+            }
 
-			// Check the starting points
-			if (int.Parse(tempVals[3]) < 0 || int.Parse(tempVals[3]) > 9) {
-				throw new Exception("Cannot Parse.. Point not on board.. Moving On");
-			} else if (int.Parse(tempVals[4]) < 0 || int.Parse(tempVals[4]) > 9) {
-				throw new Exception("Cannot Parse.. Point not on board.. Moving On");
+            // Check Direction is Valid
+            if (validDirectionTypes.Contains(tempVals[2])) {
+                switch (tempVals[2].ToLower()) {
+                    case "v":
+                        direction = DirectionType.Vertical;
+                        break;
+                    case "vertical":
+                        direction = DirectionType.Vertical;
+                        break;
+                    case "h":
+                        direction = DirectionType.Horizontal;
+                        break;
+                    case "horizontal":
+                        direction = DirectionType.Horizontal;
+                        break;
+                }
+            } else {
+                throw new Exception("Cannot Parse Direction.. Moving On");
+            }
 
-			} else if (int.Parse(tempVals[3]) + length > 9 && direction == DirectionType.Vertical) {
-				throw new Exception("Cannot Parse.. Too Close to Edge.. Moving On Vertical");
-			} else if (int.Parse(tempVals[4]) + length > 9 && direction == DirectionType.Horizontal) {
-				throw new Exception("Cannot Parse.. Too Close to Edge.. Moving On Horizontal");
+            // Check the starting points
+            if (int.Parse(tempVals[3]) < 0 || int.Parse(tempVals[3]) > 9) {
+                throw new Exception("Cannot Parse.. Point not on board.. Moving On");
+            } else if (int.Parse(tempVals[4]) < 0 || int.Parse(tempVals[4]) > 9) {
+                throw new Exception("Cannot Parse.. Point not on board.. Moving On");
 
-			} else {
-				startX = int.Parse(tempVals[3]);
-				startY = int.Parse(tempVals[4]);
-			}
+            } else if (int.Parse(tempVals[3]) + length > 9 && direction == DirectionType.Vertical) {
+                throw new Exception("Cannot Parse.. Too Close to Edge.. Moving On Vertical");
+            } else if (int.Parse(tempVals[4]) + length > 9 && direction == DirectionType.Horizontal) {
+                throw new Exception("Cannot Parse.. Too Close to Edge.. Moving On Horizontal");
 
-			// Make the ship coords and test them against other ships to prevent overlaping
-			Coord2D shipCoord = new Coord2D(startX, startY);
+            } else {
+                startX = int.Parse(tempVals[3]);
+                startY = int.Parse(tempVals[4]);
+            }
 
-			foreach (Ship ship in activeShips) {
-				for (int i = 0; i < ship.Points.Count; i++) {
-					if (shipCoord.Equals(ship.Points[i])) {
-						throw new Exception("Cannot Make Ship.. Overlaping Error.. Moving On");
-					}
-				}
-			}
+            // Make the ship coords and test them against other ships to prevent overlaping
+            Coord2D shipCoord = new Coord2D(startX, startY);
 
-			switch (shipType) {
-				case "carrier":
-					return new Carrier(shipCoord, direction, length);
-				case "battleship":
-					return new Battleship(shipCoord, direction, length);
-				case "destroyer":
-					return new Destroyer(shipCoord, direction, length);
-				case "submarine":
-					return new Submarine(shipCoord, direction, length);
-				case "patrolboat":
-					return new PatrolBoat(shipCoord, direction, length);
-			}
+            foreach (Ship ship in activeShips) {
+                for (int i = 0; i < ship.Points.Count; i++) {
+                    if (shipCoord.Equals(ship.Points[i])) {
+                        throw new Exception("Cannot Make Ship.. Overlaping Error.. Moving On");
+                    }
+                }
+            }
 
-			return null;
-		}
+            switch (shipType) {
+                case "carrier":
+                    return new Carrier(shipCoord, direction, length);
+                case "battleship":
+                    return new Battleship(shipCoord, direction, length);
+                case "destroyer":
+                    return new Destroyer(shipCoord, direction, length);
+                case "submarine":
+                    return new Submarine(shipCoord, direction, length);
+                case "patrolboat":
+                    return new PatrolBoat(shipCoord, direction, length);
+            }
 
-		public List<Ship> ParseShipFile(string shipFile) {
-			List<Ship> ships = new List<Ship>();
+            return null;
+        }
 
-			if (!File.Exists(shipFile)) {
-				Console.WriteLine($"File not found ({shipFile})");
-				return null;
-			}
+        /// <summary>
+        /// Parses a file containing ship definitions and returns a list of Ship objects.
+        /// </summary>
+        /// <param name="shipFile">The path to the file containing ship data.</param>
+        /// <returns>A list of Ship objects parsed from the file; null if the file is not found.</returns>
+        public List<Ship> ParseShipFile(string shipFile) {
+            List<Ship> ships = new List<Ship>();
 
-			string[] lines = File.ReadAllLines(shipFile);
-			foreach (string line in lines) {
-				if (line.StartsWith('#')) { continue; }
-				try {
-					ships.Add(ParseShipString(line, ships));
-				} catch (Exception ex) {
-					Console.WriteLine(ex.Message);
-				}
-			}
-			Console.ReadKey();
+            if (!File.Exists(shipFile)) {
+                Console.WriteLine($"File not found ({shipFile})");
+                return null;
+            }
 
-			return ships;
-		}
+            string[] lines = File.ReadAllLines(shipFile);
+            foreach (string line in lines) {
+                if (line.StartsWith('#')) { continue; }
+                try {
+                    ships.Add(ParseShipString(line, ships));
+                } catch (Exception ex) {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            Console.ReadKey();
 
-		public List<Coord2D> GenerateShipPoints(Coord2D start, DirectionType direction, int length) {
-			List<Coord2D> points = new List<Coord2D>();
-			for (int i = 0; i < length; i++) {
-				if (direction == DirectionType.Horizontal) {
-					points.Add(new Coord2D(start.X + i, start.Y));
-				} else {
-					points.Add(new Coord2D(start.X, start.Y + i));
-				}
-			}
-			return points;
-		}
-	}
+            return ships;
+        }
+
+        /// <summary>
+        /// Generates a list of coordinates representing the occupied points of a ship.
+        /// </summary>
+        /// <param name="start">The starting coordinate of the ship.</param>
+        /// <param name="direction">The direction the ship is facing.</param>
+        /// <param name="length">The length of the ship.</param>
+        /// <returns>A list of Coord2D points representing the ship's position on the board.</returns>
+        public List<Coord2D> GenerateShipPoints(Coord2D start, DirectionType direction, int length) {
+            List<Coord2D> points = new List<Coord2D>();
+            for (int i = 0; i < length; i++) {
+                if (direction == DirectionType.Horizontal) {
+                    points.Add(new Coord2D(start.X + i, start.Y));
+                } else {
+                    points.Add(new Coord2D(start.X, start.Y + i));
+                }
+            }
+            return points;
+        }
+    }
 }
