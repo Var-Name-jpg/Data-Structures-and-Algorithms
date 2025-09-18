@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "JNvK/a1UKTA=",
+  "success": true,
+  "projectFilePath": "/home/eclipse/Coding/Data-Structures-and-algorithms/Algorithm-Analysis/Algorithm-Analysis.csproj",
+  "expectedPackageFiles": [
+    "/home/eclipse/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.8/microsoft.aspnetcore.app.ref.9.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
