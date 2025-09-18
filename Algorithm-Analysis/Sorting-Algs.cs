@@ -79,6 +79,40 @@ namespace SortingBenchmark {
 			List<int>[] buckets = new List<int>[10];
 
 			for (int i = 0; i < 10; i++) { buckets[i] = new List<int>(); }
-			foreach (int item in items) {}
+			foreach (int item in items) {
+				int digit = (item / exp) % 10;
+				buckets[digit].Add(item);
+			}
+
+			items.Clear();
+
+			foreach (var bucket in buckets) { items.AddRange(bucket); }
+
+			exp *= 10;
+		}
+
+		return items;
+
+	}
+
+	// Radix Sort (strings)
+	public List<string> RadixSortStrings(List<string> items) {
+		int maxLength = items.Max(s => s.Length);
+
+		for (int pos = maxLength - 1; pos >= 0; pos--) {
+			List<string>[] buckets = new List<string>[256];
+			for (int i = 0; i < 256; i++) { buckets[i] = new List<string>(); }
+
+			foreach (string item in items) {
+				char c = pos < item.Length ? item[pos] : '\0';
+				buckets[c].Add(item);
+			}
+
+			items.Clear();
+			foreach (var bucket in buckets) { items.AddRange(bucket); }
+		}
+
+		return items;
+	}
 }
 
