@@ -72,6 +72,13 @@ namespace SortingBenchmark {
 
 	// Radix Sort (integers)
 	public List<int> RadixSortIntegers(List<int> items) {
-		
+		int max = items.Max();
+		int exp = 1;
+
+		while (max / exp > 0) {
+			List<int>[] buckets = new List<int>[10];
+
+			for (int i = 0; i < 10; i++) { buckets[i] = new List<int>(); }
+			foreach (int item in items) {}
 }
 
