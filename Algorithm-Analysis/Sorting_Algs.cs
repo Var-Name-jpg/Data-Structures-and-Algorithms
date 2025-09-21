@@ -1,4 +1,4 @@
-namespace SortingBenchmark.Helpers {
+namespace SortingBenchmark {
 	public static class Sorting_Algs {
 		// Insertion Sort
 		public static List<T> InsertionSort<T>(List<T> items) where T : IComparable<T> {
