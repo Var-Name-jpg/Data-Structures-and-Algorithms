@@ -47,6 +47,18 @@ namespace SortingBenchmark {
 
 			// Print how long list generation took
 			Console.WriteLine($"List generation took {generationStopwatch.Elapsed.TotalMilliseconds} ms");
+
+			// Parse words into a list
+			List<string> words = new List<string>();
+			using (StreamReader sr = new StreamReader("Words.txt")) {
+				string line;
+
+				while ((line = sr.ReadLine()) != null) {
+					words.Add(line);
+				}
+			}
+
+			Console.WriteLine(words.Count);
 		}
 	}
 }
