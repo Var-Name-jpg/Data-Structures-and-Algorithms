@@ -46,7 +46,7 @@ public class CustomQueue<T> : IEnumerable<T> {
     /// <exception cref=InvalidOperationException>Thrown when the queue is empty.</exception>
     public T Dequeue() {
         if (_count == 0)
-            throw new InvalidOperationException(Queue is empty.);
+            throw new InvalidOperationException("Queue is empty.");
 
         T item = _items[_head];
         _items[_head] = default!;
@@ -62,7 +62,7 @@ public class CustomQueue<T> : IEnumerable<T> {
     /// <exception cref=InvalidOperationException>Thrown when the queue is empty.</exception>
     public T Peek() {
         if (_count == 0)
-            throw new InvalidOperationException(Queue is empty.);
+            throw new InvalidOperationException("Queue is empty.");
 
         return _items[_head];
     }

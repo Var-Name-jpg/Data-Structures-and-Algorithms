@@ -40,7 +40,7 @@ public class CustomStack<T> : IEnumerable<T> {
     /// <exception cref=InvalidOperationException>Thrown when the stack is empty.</exception>
     public T Pop() {
         if (_count == 0)
-            throw new InvalidOperationException(Stack is empty);
+            throw new InvalidOperationException("Stack is empty");
 
         T item = _items[--_count];
         _items[_count] = default!;
@@ -54,7 +54,7 @@ public class CustomStack<T> : IEnumerable<T> {
     /// <exception cref=InvalidOperationException>Thrown when the stack is empty.</exception>
     public T Peek() {
         if (_count == 0)
-            throw new InvalidOperationException(Stack is empty);
+            throw new InvalidOperationException("Stack is empty");
 
         return _items[_count-1];
     }
