@@ -128,7 +128,6 @@ namespace SortingBenchmark {
 			Console.WriteLine(new string('=', 20));
 
 			// Quick sort with sorted list
-			/*
 			List<int> quickSorted_1000 = new List<int>(Sorted_1000);
 			
 			timer = Stopwatch.StartNew();
@@ -145,8 +144,6 @@ namespace SortingBenchmark {
 			timer.Stop();
 
 			timeRandom_1000 = timer.Elapsed.TotalMilliseconds;
-			
-			*/
 
 			// Quick sort with reverse list
 			List<int> quickReverse_1000 = new List<int>(Reverse_1000);
@@ -167,8 +164,8 @@ namespace SortingBenchmark {
 			timeWords = timer.Elapsed.TotalMilliseconds;
 
 			// Print the times for log
-			// Console.WriteLine($"Sorted: {timeSorted_1000} ms");
-			// Console.WriteLine($"Random: {timeRandom_1000} ms");
+			Console.WriteLine($"Sorted: {timeSorted_1000} ms");
+			Console.WriteLine($"Random: {timeRandom_1000} ms");
 			Console.WriteLine($"Reverse: {timeReverse_1000} ms");
 			Console.WriteLine($"Words: {timeWords} ms");
 			Console.WriteLine(new string('=', 20));
