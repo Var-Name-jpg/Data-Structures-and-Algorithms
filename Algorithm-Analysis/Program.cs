@@ -78,39 +78,39 @@ namespace SortingBenchmark {
 			Console.WriteLine(new string('=', 20));
 
 			// Insertion sort with sorted list
-			Stopwatch timer = Stopwatch.StartNew();
-
 			List<int> insertionSorted_1000 = new List<int>(Sorted_1000);
+			
+			Stopwatch timer = Stopwatch.StartNew();
 			insertionSorted_1000 = Sorting_Algs.InsertionSort(insertionSorted_1000);
-
 			timer.Stop();
+
 			double timeSorted_1000 = timer.Elapsed.TotalMilliseconds;
 
 			// Insertion sort with random list
-			timer = Stopwatch.StartNew();
-
 			List<int> insertionRandom_1000 = new List<int>(Random_1000);
+			
+			timer = Stopwatch.StartNew();
 			insertionRandom_1000 = Sorting_Algs.InsertionSort(insertionRandom_1000);
-
 			timer.Stop();
+
 			double timeRandom_1000 = timer.Elapsed.TotalMilliseconds;
 
 			// Insetion sort with reverse list
-			timer = Stopwatch.StartNew();
-
 			List<int> insertionReverse_1000 = new List<int>(Reverse_1000);
+			
+			timer = Stopwatch.StartNew();
 			insertionReverse_1000 = Sorting_Algs.InsertionSort(insertionReverse_1000);
-
 			timer.Stop();
+
 			double timeReverse_1000 = timer.Elapsed.TotalMilliseconds;
 
 			// Insertion sort with text
-			timer = Stopwatch.StartNew();
-
 			List<string> insertionWords = new List<string>(words);
+			
+			timer = Stopwatch.StartNew();
 			insertionWords = Sorting_Algs.InsertionSort(insertionWords);
-
 			timer.Stop();
+
 			double timeWords = timer.Elapsed.TotalMilliseconds;
 
 			// Print the times for log
@@ -121,8 +121,57 @@ namespace SortingBenchmark {
 			Console.WriteLine(new string('=', 20));
 
 			//////////////////////////////////////////////////////////////////////////////////////
-			/////////////////////   INSERTION SORT  //////////////////////////////////////////////
-			//////////////////////////////////////////////////////////////////////////////////////               
+			/////////////////////   QUICK     SORT  //////////////////////////////////////////////
+			//////////////////////////////////////////////////////////////////////////////////////
+
+			Console.WriteLine("\nQuick Sort w/ 1000 integers");
+			Console.WriteLine(new string('=', 20));
+
+			// Quick sort with sorted list
+			/*
+			List<int> quickSorted_1000 = new List<int>(Sorted_1000);
+			
+			timer = Stopwatch.StartNew();
+			quickSorted_1000 = Sorting_Algs.QuickSort(quickSorted_1000);
+			timer.Stop();
+
+			timeSorted_1000 = timer.Elapsed.TotalMilliseconds;
+
+			// Quick sort with random list
+			List<int> quickRandom_1000 = new List<int>(Random_1000);
+			
+			timer = Stopwatch.StartNew();
+			quickRandom_1000 = Sorting_Algs.QuickSort(quickRandom_1000);
+			timer.Stop();
+
+			timeRandom_1000 = timer.Elapsed.TotalMilliseconds;
+			
+			*/
+
+			// Quick sort with reverse list
+			List<int> quickReverse_1000 = new List<int>(Reverse_1000);
+			
+			timer = Stopwatch.StartNew();
+			quickReverse_1000 = Sorting_Algs.QuickSort(quickReverse_1000);
+			timer.Stop();
+
+			timeReverse_1000 = timer.Elapsed.TotalMilliseconds;
+
+			// Quick sort with text
+			List<string> quickWords = new List<string>(words);
+
+			timer = Stopwatch.StartNew();
+			quickWords = Sorting_Algs.QuickSort(quickWords);
+			timer.Stop();
+
+			timeWords = timer.Elapsed.TotalMilliseconds;
+
+			// Print the times for log
+			// Console.WriteLine($"Sorted: {timeSorted_1000} ms");
+			// Console.WriteLine($"Random: {timeRandom_1000} ms");
+			Console.WriteLine($"Reverse: {timeReverse_1000} ms");
+			Console.WriteLine($"Words: {timeWords} ms");
+			Console.WriteLine(new string('=', 20));
 		}
 	}
 }

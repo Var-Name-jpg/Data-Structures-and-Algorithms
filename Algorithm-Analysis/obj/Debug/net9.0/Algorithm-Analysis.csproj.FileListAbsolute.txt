@@ -1,0 +1,15 @@
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/bin/Debug/net9.0/Algorithm-Analysis
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/bin/Debug/net9.0/Algorithm-Analysis.deps.json
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/bin/Debug/net9.0/Algorithm-Analysis.runtimeconfig.json
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/bin/Debug/net9.0/Algorithm-Analysis.dll
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/bin/Debug/net9.0/Algorithm-Analysis.pdb
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/Algorithm-Analysis.GeneratedMSBuildEditorConfig.editorconfig
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/Algorithm-Analysis.AssemblyInfoInputs.cache
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/Algorithm-Analysis.AssemblyInfo.cs
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/Algorithm-Analysis.csproj.CoreCompileInputs.cache
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/Algorithm-Analysis.sourcelink.json
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/Algorithm-Analysis.dll
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/refint/Algorithm-Analysis.dll
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/Algorithm-Analysis.pdb
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/Algorithm-Analysis.genruntimeconfig.cache
+/home/eclipse/Coding/Data-Structures-and-Algorithms/Algorithm-Analysis/obj/Debug/net9.0/ref/Algorithm-Analysis.dll
