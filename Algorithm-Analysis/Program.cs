@@ -17,9 +17,6 @@ namespace SortingBenchmark {
 			///////////////////////////////////////////////////////////////////////////////////////
 			Random rand = new Random();
 
-			// Diagnostic for generating numbers (for control)
-			Stopwatch generationStopwatch = Stopwatch.StartNew();
-
 			/// 1k lists ///
 			
 			// Sorted
@@ -90,30 +87,46 @@ namespace SortingBenchmark {
 				}
 			}
 
-			// Stop the stopwatch
-			generationStopwatch.Stop();
-
-			// Print how long it took to generate lists
-			Console.WriteLine($"List generation took {generationStopwatch.Elapsed.TotalMilliseconds} ms");
-
 			//////////////////////////////////////////////////////////////////////////////////////
 			/////////////////////	INSERTION SORT	//////////////////////////////////////////////
 			//////////////////////////////////////////////////////////////////////////////////////
 			
-			Console.WriteLine("\nInsertion Sort w/ 1000 integers");
-			Console.WriteLine(new string('=', 20));
-
-			// Run benchmarks
+			// Run benchmarks for 1k lists
 			double timeSorted_1000 = Benchmark(Sorted_1000, Sorting_Algs.InsertionSort);
 			double timeRandom_1000 = Benchmark(Random_1000, Sorting_Algs.InsertionSort);
 			double timeReverse_1000 = Benchmark(Reverse_1000, Sorting_Algs.InsertionSort);
+
+			// Run benchmarks for 100k lists
+			double timeSorted_100_000 = Benchmark(Sorted_100_000, Sorting_Algs.InsertionSort);
+			double timeRandom_100_000 = Benchmark(Random_100_000, Sorting_Algs.InsertionSort);
+			double timeReverse_100_000 = Benchmark(Reverse_100_000, Sorting_Algs.InsertionSort);
+			
+			// Run benchmarks for 1k strings
 			double timeWords = Benchmark(words, Sorting_Algs.InsertionSort);
 
-
 			// Print the times for log
+			Console.WriteLine("Insertion Sort w/ 1k integers");
+			Console.WriteLine(new string('=', 20));
+
 			Console.WriteLine($"Sorted: {timeSorted_1000} ms");
 			Console.WriteLine($"Random: {timeRandom_1000} ms");
 			Console.WriteLine($"Reverse: {timeReverse_1000} ms");
+
+			Console.WriteLine(new string('=', 20));
+			Console.WriteLine();
+
+			Console.WriteLine("Insertion Sort w/ 100k integers");
+			Console.WriteLine(new string('=', 20));
+			
+			Console.WriteLine($"Sorted: {timeSorted_100_000} ms");
+			Console.WriteLine($"Random: {timeRandom_100_000} ms");
+			Console.WriteLine($"Reverse: {timeReverse_100_000} ms");
+
+			Console.WriteLine(new string('=', 20));
+			Console.WriteLine();
+
+			Console.WriteLine("Insertion Sort w/ 1k words");
+			Console.WriteLine(new string('=', 20));
 			Console.WriteLine($"Words: {timeWords} ms");
 			Console.WriteLine(new string('=', 20));
 
@@ -121,21 +134,51 @@ namespace SortingBenchmark {
 			/////////////////////   QUICK     SORT  //////////////////////////////////////////////
 			//////////////////////////////////////////////////////////////////////////////////////
 
-			Console.WriteLine("\nQuick Sort w/ 1000 integers");
-			Console.WriteLine(new string('=', 20));
+			Console.WriteLine("\n-------------------------------------------------------\n");
 
-			// Run benchmarks
+			// Run benchmarks for 1k lists
 			timeSorted_1000 = Benchmark(Sorted_1000, Sorting_Algs.QuickSort);
 			timeRandom_1000 = Benchmark(Random_1000, Sorting_Algs.QuickSort);
 			timeReverse_1000 = Benchmark(Reverse_1000, Sorting_Algs.QuickSort);
+
+			// Run benchmarks for 100k lists
+			timeSorted_100_000 = Benchmark(Sorted_100_000, Sorting_Algs.QuickSort);
+			timeRandom_100_000 = Benchmark(Random_100_000, Sorting_Algs.QuickSort);
+			timeReverse_100_000 = Benchmark(Reverse_100_000, Sorting_Algs.QuickSort);
+
+			// Run benchmark for 1k strings
 			timeWords = Benchmark(words, Sorting_Algs.QuickSort);
 
 			// Print the times for log
+			Console.WriteLine("Quick Sort w/ 1k integers");
+			Console.WriteLine(new string('=', 20));
+
 			Console.WriteLine($"Sorted: {timeSorted_1000} ms");
 			Console.WriteLine($"Random: {timeRandom_1000} ms");
 			Console.WriteLine($"Reverse: {timeReverse_1000} ms");
+
+			Console.WriteLine(new string('=', 20));
+			Console.WriteLine();
+
+			Console.WriteLine("Quick Sort w/ 100k integers");
+			Console.WriteLine(new string('=', 20));
+			
+			Console.WriteLine($"Sorted: {timeSorted_100_000} ms");
+			Console.WriteLine($"Random: {timeRandom_100_000} ms");
+			Console.WriteLine($"Reverse: {timeReverse_100_000} ms");
+
+			Console.WriteLine(new string('=', 20));
+			Console.WriteLine();
+
+			Console.WriteLine("Quick Sort w/ 1k words");
+			Console.WriteLine(new string('=', 20));
 			Console.WriteLine($"Words: {timeWords} ms");
 			Console.WriteLine(new string('=', 20));
+			
+			//////////////////////////////////////////////////////////////////////////////////////
+			/////////////////////   Merge     SORT  //////////////////////////////////////////////
+			//////////////////////////////////////////////////////////////////////////////////////
+			
 		}
 
 		static double Benchmark<T>(List<T> input, SortAlgorithm<T> sorter) where T : IComparable<T> {
