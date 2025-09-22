@@ -118,7 +118,11 @@ namespace SortingBenchmark {
 			Console.WriteLine($"Random: {timeRandom_1000} ms");
 			Console.WriteLine($"Reverse: {timeReverse_1000} ms");
 			Console.WriteLine($"Words: {timeWords} ms");
-			Console.WriteLine(new string('=', 20));               
+			Console.WriteLine(new string('=', 20));
+
+			//////////////////////////////////////////////////////////////////////////////////////
+			/////////////////////   INSERTION SORT  //////////////////////////////////////////////
+			//////////////////////////////////////////////////////////////////////////////////////               
 		}
 	}
 }
