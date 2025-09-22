@@ -51,8 +51,8 @@ namespace SortingBenchmark {
 			List<int> Reverse_1000 = new List<int>();
 			List<int> Reverse_100_000 = new List<int>();
 
-			for (int i = 1_000; i > 0; i--) { Reverse_1000.Add(i); }
-			for (int i = 100_000; i > 0; i--) { Reverse_100_000.Add(i); }
+			for (int i = 6_003; i > 1_000; i-=3) { Reverse_1000.Add(i); }
+			for (int i = 600_003; i > 100_000; i-=3) { Reverse_100_000.Add(i); }
 
 			// Parse words into a list
 			List<string> words = new List<string>();
@@ -129,7 +129,7 @@ namespace SortingBenchmark {
 
 			// Quick sort with sorted list
 			List<int> quickSorted_1000 = new List<int>(Sorted_1000);
-			
+
 			timer = Stopwatch.StartNew();
 			quickSorted_1000 = Sorting_Algs.QuickSort(quickSorted_1000);
 			timer.Stop();
