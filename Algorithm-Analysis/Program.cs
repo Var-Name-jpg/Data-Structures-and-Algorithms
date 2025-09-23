@@ -97,12 +97,24 @@ namespace SortingBenchmark {
 			double timeSorted_100_000, timeRandom_100_000, timeReverse_100_000;
 			double timeWords;
 
+			double timeSorted_1k_Average, timeRandom_1k_Average, timeReverse_1k_Average;
+			double timeSorted_100k_Average, timeRandom_100k_Average, timeReverse_100k_Average;
+			double timeWords_Average;
+
 			int iterations = 3;
 
 			//////////////////////////////////////////////////////////////////////////////////////
 			/////////////////////   QUICK     SORT  //////////////////////////////////////////////
 			//////////////////////////////////////////////////////////////////////////////////////
 			for (int i = 0; i < iterations; i++) {
+				timeSorted_1k_Average = 0;
+				timeRandom_1k_Average = 0;
+				timeReverse_1k_Average = 0;
+				timeSorted_100k_Average = 0;
+				timeRandom_100k_Average = 0;
+				timeReverse_100k_Average = 0;
+				timeWords_Average = 0;
+				
 				// Run benchmarks for 1k lists
 				timeSorted_1000 = Benchmark(Sorted_1000, Sorting_Algs.QuickSort);
 				timeRandom_1000 = Benchmark(Random_1000, Sorting_Algs.QuickSort);
