@@ -41,6 +41,7 @@ namespace BattleshipFactory {
 
                             if (File.Exists(tempPath)) {
                                 filePath = tempPath;
+				fleet = shipFact.ParseShipFile(filePath);
                                 break;
                             } else {
                                 Console.WriteLine("Cannot find file.. Please try again...");
