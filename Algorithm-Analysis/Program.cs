@@ -137,13 +137,13 @@ namespace SortingBenchmark {
 				timeWords_Average += timeWords;
 			}
 
-			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / 3), 2);
-			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / 3), 2);
-			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / 3), 2);
-			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / 3), 2);
-			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / 3), 2);
-			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / 3), 2);
-			timeWords_Average = Math.Round((timeWords_Average / 3), 2);
+			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / iterations), 2);
+			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / iterations), 2);
+			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / iterations), 2);
+			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / iterations), 2);
+			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / iterations), 2);
+			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / iterations), 2);
+			timeWords_Average = Math.Round((timeWords_Average / iterations), 2);
 
 			using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
 				sw.WriteLine($"Average,{timeSorted_1k_Average},{timeRandom_1k_Average},{timeReverse_1k_Average},{timeSorted_100k_Average},{timeRandom_100k_Average},{timeReverse_100k_Average},{timeWords_Average}");
@@ -188,13 +188,13 @@ namespace SortingBenchmark {
 				timeWords_Average += timeWords;
 			}
 
-			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / 3), 2);
-			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / 3), 2);
-			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / 3), 2);
-			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / 3), 2);
-			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / 3), 2);
-			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / 3), 2);
-			timeWords_Average = Math.Round((timeWords_Average / 3), 2);
+			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / iterations), 2);
+			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / iterations), 2);
+			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / iterations), 2);
+			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / iterations), 2);
+			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / iterations), 2);
+			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / iterations), 2);
+			timeWords_Average = Math.Round((timeWords_Average / iterations), 2);
 
 			using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
 				sw.WriteLine($"Average,{timeSorted_1k_Average},{timeRandom_1k_Average},{timeReverse_1k_Average},{timeSorted_100k_Average},{timeRandom_100k_Average},{timeReverse_100k_Average},{timeWords_Average}");
@@ -239,13 +239,13 @@ namespace SortingBenchmark {
 				timeWords_Average += timeWords;
 			}
 
-			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / 3), 2);
-			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / 3), 2);
-			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / 3), 2);
-			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / 3), 2);
-			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / 3), 2);
-			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / 3), 2);
-			timeWords_Average = Math.Round((timeWords_Average / 3), 2);
+			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / iterations), 2);
+			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / iterations), 2);
+			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / iterations), 2);
+			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / iterations), 2);
+			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / iterations), 2);
+			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / iterations), 2);
+			timeWords_Average = Math.Round((timeWords_Average / iterations), 2);
 
 			using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
 				sw.WriteLine($"Average,{timeSorted_1k_Average},{timeRandom_1k_Average},{timeReverse_1k_Average},{timeSorted_100k_Average},{timeRandom_100k_Average},{timeReverse_100k_Average},{timeWords_Average}");
@@ -290,13 +290,13 @@ namespace SortingBenchmark {
 				timeWords_Average += timeWords;
 			}
 
-			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / 3), 2);
-			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / 3), 2);
-			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / 3), 2);
-			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / 3), 2);
-			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / 3), 2);
-			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / 3), 2);
-			timeWords_Average = Math.Round((timeWords_Average / 3), 2);
+			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / iterations), 2);
+			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / iterations), 2);
+			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / iterations), 2);
+			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / iterations), 2);
+			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / iterations), 2);
+			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / iterations), 2);
+			timeWords_Average = Math.Round((timeWords_Average / iterations), 2);
 
 			using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
 				sw.WriteLine($"Average,{timeSorted_1k_Average},{timeRandom_1k_Average},{timeReverse_1k_Average},{timeSorted_100k_Average},{timeRandom_100k_Average},{timeReverse_100k_Average},{timeWords_Average}");
