@@ -1,9 +1,5 @@
 namespace SortingBenchmark {
 	public static class Sorting_Algs {
-		public static ParallelOptions options = new ParallelOptions {
-			MaxDegreeOfParallelism = Environment.ProcessorCount - 2
-		};
-
 		// Insertion Sort
 		public static List<T> InsertionSort<T>(List<T> items) where T : IComparable<T> {
 			for (int i = 1; i < items.Count; i++) {
@@ -36,24 +32,12 @@ namespace SortingBenchmark {
 				else { equal.Add(item); }
 			}
 
-			List<T> sortedLess = null, sortedGreater = null;
+			List<T> sorted = new List<T>();
+			sorted.AddRange(QuickSort(less));
+			sorted.AddRange(equal);
+			sorted.AddRange(QuickSort(greater));
 
-			if (items.Count > 1_000) {
-				Parallel.Invoke(options,
-						() => sortedLess = QuickSort(less),
-						() => sortedGreater = QuickSort(greater)
-					       );
-			} else {
-				sortedLess = QuickSort(less);
-				sortedGreater = QuickSort(greater);
-			}
-
-			var result = new List<T>();
-			result.AddRange(sortedLess);
-			result.AddRange(equal);
-			result.AddRange(sortedGreater);
-
-			return result;
+			return sorted;
 		}
 
 		// Merge Sort
@@ -64,20 +48,7 @@ namespace SortingBenchmark {
 			List<T> left = items.GetRange(0, mid);
 			List<T> right = items.GetRange(mid, items.Count - mid);
 
-			List<T> sortedLeft = null, sortedRight = null;
-
-			if (items.Count > 1_000) {
-				Parallel.Invoke(options,
-						() => sortedLeft = MergeSort(left),
-						() => sortedRight = MergeSort(right)
-					       );
-			} else {
-				sortedLeft = MergeSort(left);
-				sortedRight = MergeSort(right);
-
-			}
-
-			return Merge(sortedLeft, sortedRight);
+			return Merge(MergeSort(left), MergeSort(right));
 		}
 
 		public static List<T> Merge<T>(List<T> left, List<T> right) where T : IComparable<T> {
@@ -104,24 +75,24 @@ namespace SortingBenchmark {
 		public static List<int> RadixSortIntegers(List<int> items) {
 			int max = items.Max();
 			int exp = 1;
-			var output = new List<int>(items);
-			
+
 			while (max / exp > 0) {
-				var buckets = new List<int>[10];
+				List<int>[] buckets = new List<int>[10];
+
 				for (int i = 0; i < 10; i++) { buckets[i] = new List<int>(); }
+				foreach (int item in items) {
+					int digit = (item / exp) % 10;
+					buckets[digit].Add(item);
+				}
 
-				Parallel.ForEach(output, options, item => {
-						int digit = (item / exp) % 10;
-						lock (buckets[digit]) { buckets[digit].Add(item); }
-						});
+				items.Clear();
 
-				output.Clear();
-				foreach (var bucket in buckets) { output.AddRange(bucket); }
-				
+				foreach (var bucket in buckets) { items.AddRange(bucket); }
+
 				exp *= 10;
 			}
 
-			return output;
+			return items;
 
 		}
 
@@ -146,4 +117,3 @@ namespace SortingBenchmark {
 		}
 	}
 }
-

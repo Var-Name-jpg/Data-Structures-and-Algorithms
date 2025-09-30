@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime;
-using System.Threading.Tasks;
 
 namespace SortingBenchmark {
 	public class Program {
@@ -108,46 +107,60 @@ namespace SortingBenchmark {
 
 			int iterations = 30;
 
-			var quickTasks = new List<Task<double[]>>();
-
 			//////////////////////////////////////////////////////////////////////////////////////
-			/////////////////////   Insertion     SORT  //////////////////////////////////////////
+			/////////////////////   QUICK     SORT  //////////////////////////////////////////////
 			//////////////////////////////////////////////////////////////////////////////////////
 			for (int i = 0; i < iterations; i++) {
-				quickTasks.Add(Task.Run(() => {
-					double[] results = new double[7];
+				// Run benchmarks for 1k lists
+				timeSorted_1000 = Benchmark(Sorted_1000, Sorting_Algs.QuickSort);
+				timeRandom_1000 = Benchmark(Random_1000, Sorting_Algs.QuickSort);
+				timeReverse_1000 = Benchmark(Reverse_1000, Sorting_Algs.QuickSort);
 
-					// Run benchmarks for 1k lists
-					results[0] = Benchmark(Sorted_1000, Sorting_Algs.InsertionSort);
-					results[1] = Benchmark(Random_1000, Sorting_Algs.InsertionSort);
-					results[2] = Benchmark(Reverse_1000, Sorting_Algs.InsertionSort);
+				// Run benchmarks for 100k lists
+				timeSorted_100_000 = Benchmark(Sorted_100_000, Sorting_Algs.QuickSort);
+				timeRandom_100_000 = Benchmark(Random_100_000, Sorting_Algs.QuickSort);
+				timeReverse_100_000 = Benchmark(Reverse_100_000, Sorting_Algs.QuickSort);
 
-					// Run benchmarks for 100k lists
-					results[3] = Benchmark(Sorted_100_000, Sorting_Algs.InsertionSort);
-					results[4] = Benchmark(Random_100_000, Sorting_Algs.InsertionSort);
-					results[5] = Benchmark(Reverse_100_000, Sorting_Algs.InsertionSort);
-
-					// Run benchmark for 1k strings
-					results[6] = Benchmark(words, Sorting_Algs.InsertionSort);
-
-					return results;
-				}));
+				// Run benchmark for 1k strings
+				timeWords = Benchmark(words, Sorting_Algs.QuickSort);
+	
+				using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
+					sw.WriteLine($"Quick {i},{timeSorted_1000},{timeRandom_1000},{timeReverse_1000},{timeSorted_100_000},{timeRandom_100_000},{timeReverse_100_000},{timeWords}");
+				}
+				
+				timeSorted_1k_Average += timeSorted_1000;
+				timeRandom_1k_Average += timeRandom_1000;
+				timeReverse_1k_Average += timeReverse_1000;
+				timeSorted_100k_Average += timeSorted_100_000;
+				timeRandom_100k_Average += timeRandom_100_000;
+				timeReverse_100k_Average += timeReverse_100_000;
+				timeWords_Average += timeWords;
 			}
 
-			Task.WaitAll(quickTasks.ToArray());
+			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / iterations), 2);
+			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / iterations), 2);
+			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / iterations), 2);
+			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / iterations), 2);
+			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / iterations), 2);
+			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / iterations), 2);
+			timeWords_Average = Math.Round((timeWords_Average / iterations), 2);
 
 			using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
-				for (int i = 0; i < iterations; i++) {
-					var results = quickTasks[i].Result;
-					sw.WriteLine($"Insertion {i},{results[0]},{results[1]},{results[2]},{results[3]},{results[4]},{results[5]},{results[6]}");
-				}
-
+				sw.WriteLine($"Average,{timeSorted_1k_Average},{timeRandom_1k_Average},{timeReverse_1k_Average},{timeSorted_100k_Average},{timeRandom_100k_Average},{timeReverse_100k_Average},{timeWords_Average}");
 				sw.WriteLine();
 			}
 			
 			//////////////////////////////////////////////////////////////////////////////////////
 			/////////////////////   Merge     SORT  //////////////////////////////////////////////
 			//////////////////////////////////////////////////////////////////////////////////////
+			timeSorted_1k_Average = 0;
+			timeRandom_1k_Average = 0;
+			timeReverse_1k_Average = 0;
+			timeSorted_100k_Average = 0;
+			timeRandom_100k_Average = 0;
+			timeReverse_100k_Average = 0;
+			timeWords_Average = 0;
+
 			for (int i = 0; i < iterations; i++) {
 				// Run benchmarks for 1k lists
 				timeSorted_1000 = Benchmark(Sorted_1000, Sorting_Algs.MergeSort);
@@ -165,15 +178,40 @@ namespace SortingBenchmark {
 				using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
 					sw.WriteLine($"Merge {i},{timeSorted_1000},{timeRandom_1000},{timeReverse_1000},{timeSorted_100_000},{timeRandom_100_000},{timeReverse_100_000},{timeWords}");
 				}
+				
+				timeSorted_1k_Average += timeSorted_1000;
+				timeRandom_1k_Average += timeRandom_1000;
+				timeReverse_1k_Average += timeReverse_1000;
+				timeSorted_100k_Average += timeSorted_100_000;
+				timeRandom_100k_Average += timeRandom_100_000;
+				timeReverse_100k_Average += timeReverse_100_000;
+				timeWords_Average += timeWords;
 			}
 
+			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / iterations), 2);
+			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / iterations), 2);
+			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / iterations), 2);
+			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / iterations), 2);
+			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / iterations), 2);
+			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / iterations), 2);
+			timeWords_Average = Math.Round((timeWords_Average / iterations), 2);
+
 			using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
+				sw.WriteLine($"Average,{timeSorted_1k_Average},{timeRandom_1k_Average},{timeReverse_1k_Average},{timeSorted_100k_Average},{timeRandom_100k_Average},{timeReverse_100k_Average},{timeWords_Average}");
 				sw.WriteLine();
 			}
 			
 			//////////////////////////////////////////////////////////////////////////////////////
 			/////////////////////   Radix     SORT  //////////////////////////////////////////////
 			//////////////////////////////////////////////////////////////////////////////////////
+			timeSorted_1k_Average = 0;
+			timeRandom_1k_Average = 0;
+			timeReverse_1k_Average = 0;
+			timeSorted_100k_Average = 0;
+			timeRandom_100k_Average = 0;
+			timeReverse_100k_Average = 0;
+			timeWords_Average = 0;
+	
 			for (int i = 0; i < iterations; i++) {
 				// Run benchmarks for 1k lists
 				timeSorted_1000 = Benchmark(Sorted_1000, Sorting_Algs.RadixSortIntegers);
@@ -191,15 +229,40 @@ namespace SortingBenchmark {
 				using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
 					sw.WriteLine($"Radix {i},{timeSorted_1000},{timeRandom_1000},{timeReverse_1000},{timeSorted_100_000},{timeRandom_100_000},{timeReverse_100_000},{timeWords}");
 				}
+				
+				timeSorted_1k_Average += timeSorted_1000;
+				timeRandom_1k_Average += timeRandom_1000;
+				timeReverse_1k_Average += timeReverse_1000;
+				timeSorted_100k_Average += timeSorted_100_000;
+				timeRandom_100k_Average += timeRandom_100_000;
+				timeReverse_100k_Average += timeReverse_100_000;
+				timeWords_Average += timeWords;
 			}
 
+			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / iterations), 2);
+			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / iterations), 2);
+			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / iterations), 2);
+			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / iterations), 2);
+			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / iterations), 2);
+			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / iterations), 2);
+			timeWords_Average = Math.Round((timeWords_Average / iterations), 2);
+
 			using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
+				sw.WriteLine($"Average,{timeSorted_1k_Average},{timeRandom_1k_Average},{timeReverse_1k_Average},{timeSorted_100k_Average},{timeRandom_100k_Average},{timeReverse_100k_Average},{timeWords_Average}");
 				sw.WriteLine();
 			}
 
 			//////////////////////////////////////////////////////////////////////////////////////
-			/////////////////////	Quick  SORT	//////////////////////////////////////////////
+			/////////////////////	INSERTION SORT	//////////////////////////////////////////////
 			//////////////////////////////////////////////////////////////////////////////////////
+			timeSorted_1k_Average = 0;
+			timeRandom_1k_Average = 0;
+			timeReverse_1k_Average = 0;
+			timeSorted_100k_Average = 0;
+			timeRandom_100k_Average = 0;
+			timeReverse_100k_Average = 0;
+			timeWords_Average = 0;	
+			
 			for (int i = 0; i < iterations; i++) {
 				// Run benchmarks for 1k lists
 				timeSorted_1000 = Benchmark(Sorted_1000, Sorting_Algs.InsertionSort);
@@ -215,12 +278,28 @@ namespace SortingBenchmark {
 				timeWords = Benchmark(words, Sorting_Algs.InsertionSort);
 	
 				using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
-					sw.WriteLine($"Quick {i},{timeSorted_1000},{timeRandom_1000},{timeReverse_1000},{timeSorted_100_000},{timeRandom_100_000},{timeReverse_100_000},{timeWords}");
+					sw.WriteLine($"Insertion {i},{timeSorted_1000},{timeRandom_1000},{timeReverse_1000},{timeSorted_100_000},{timeRandom_100_000},{timeReverse_100_000},{timeWords}");
 				}
 				
+				timeSorted_1k_Average += timeSorted_1000;
+				timeRandom_1k_Average += timeRandom_1000;
+				timeReverse_1k_Average += timeReverse_1000;
+				timeSorted_100k_Average += timeSorted_100_000;
+				timeRandom_100k_Average += timeRandom_100_000;
+				timeReverse_100k_Average += timeReverse_100_000;
+				timeWords_Average += timeWords;
 			}
 
+			timeSorted_1k_Average = Math.Round((timeSorted_1k_Average / iterations), 2);
+			timeRandom_1k_Average = Math.Round((timeRandom_1k_Average / iterations), 2);
+			timeReverse_1k_Average = Math.Round((timeReverse_1k_Average / iterations), 2);
+			timeSorted_100k_Average = Math.Round((timeSorted_100k_Average / iterations), 2);
+			timeRandom_100k_Average = Math.Round((timeRandom_100k_Average / iterations), 2);
+			timeReverse_100k_Average = Math.Round((timeReverse_100k_Average / iterations), 2);
+			timeWords_Average = Math.Round((timeWords_Average / iterations), 2);
+
 			using (StreamWriter sw = new StreamWriter("Data.csv", true)) {
+				sw.WriteLine($"Average,{timeSorted_1k_Average},{timeRandom_1k_Average},{timeReverse_1k_Average},{timeSorted_100k_Average},{timeRandom_100k_Average},{timeReverse_100k_Average},{timeWords_Average}");
 				sw.WriteLine();
 			}
 			
