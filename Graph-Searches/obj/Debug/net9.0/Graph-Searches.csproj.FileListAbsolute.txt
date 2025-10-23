@@ -1,0 +1,15 @@
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/Graph-Searches.GeneratedMSBuildEditorConfig.editorconfig
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/Graph-Searches.AssemblyInfoInputs.cache
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/Graph-Searches.AssemblyInfo.cs
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/Graph-Searches.csproj.CoreCompileInputs.cache
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/Graph-Searches.sourcelink.json
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/bin/Debug/net9.0/Graph-Searches
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/bin/Debug/net9.0/Graph-Searches.deps.json
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/bin/Debug/net9.0/Graph-Searches.runtimeconfig.json
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/bin/Debug/net9.0/Graph-Searches.dll
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/bin/Debug/net9.0/Graph-Searches.pdb
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/Graph-Searches.dll
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/refint/Graph-Searches.dll
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/Graph-Searches.pdb
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/Graph-Searches.genruntimeconfig.cache
+/home/eclipse/Classes/Data-Structures-and-Algorithms/Graph-Searches/obj/Debug/net9.0/ref/Graph-Searches.dll
