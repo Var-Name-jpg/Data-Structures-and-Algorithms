@@ -20,6 +20,12 @@ namespace GraphSearches {
 		public Vertex(string id) {
 			Id = id;
 		}
+		public override bool Equals(object obj) {
+			return obj is Vertex other && Id == other.Id;
+		}
+		public override int GetHashCode() {
+			return Id.GetHashCode();
+		}
 	}
 
 	public class DirectedWeightedGraph {
@@ -41,19 +47,15 @@ namespace GraphSearches {
 	
 
 		public void AddVertex(Vertex vertex) {
-			if (adjacencyList.ContainsKey(vertex))
-				return;
+			foreach (Vertex node in adjacencyList.Keys) {
+				if (vertex.Equals(node))
+					return;
+			}
 
 			adjacencyList.Add(vertex, new List<Edge>());
 		}
 
 		public void AddEdge(Vertex source, Edge connection) {
-			if (!adjacencyList.ContainsKey(source))
-				return;
-
-			if (adjacencyList.ContainsKey(connection.Destination))
-				AddVertex(connection.Destination);
-			
 			adjacencyList[source].Add(connection);
 		}
 
@@ -74,13 +76,11 @@ namespace GraphSearches {
 
 		public void PrintGraph() {
 			string printMe = "";
-			List<string> temp = new List<string>();
-
 			foreach (Vertex vertex in adjacencyList.Keys) {
 				printMe += $"{vertex.Id} -> ";
+				var temp = new List<string>();
 
 				foreach (Edge edge in adjacencyList[vertex]) {
-					temp = new List<string>();
 					temp.Add($"[{edge.Destination.Id},{edge.Weight}]");
 				}
 
