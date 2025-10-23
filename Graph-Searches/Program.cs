@@ -6,7 +6,8 @@ using System.IO;
 namespace GraphSearches {
 	public class Program {
 		public static void Main(string[] args) {
-			DirectedWeightedGraph<string> graph = new DirectedWeightedGraph<string>("Data-Files/graph_100_edges.csv");
+			DirectedWeightedGraph graph = new DirectedWeightedGraph("Data-Files/graph_100_edges.csv");
+			graph.PrintGraph();
 		}
 	}
 }
