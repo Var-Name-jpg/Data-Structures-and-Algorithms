@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
 
 namespace GraphSearches {
 	public class Edge {
@@ -28,7 +29,7 @@ namespace GraphSearches {
 		}
 	}
 
-	public class DirectedWeightedGraph {
+	public partial class DirectedWeightedGraph {
 		private Dictionary< Vertex, List<Edge> > adjacencyList = new Dictionary< Vertex, List<Edge> >();
 
 		public DirectedWeightedGraph(string filePath) {

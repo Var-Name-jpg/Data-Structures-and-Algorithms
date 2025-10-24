@@ -8,6 +8,8 @@ namespace GraphSearches {
 		public static void Main(string[] args) {
 			DirectedWeightedGraph graph = new DirectedWeightedGraph("Data-Files/graph_100_edges.csv");
 			graph.PrintGraph();
+
+			var result = graph.DepthFirstSearch();
 		}
 	}
 }
