@@ -30,7 +30,7 @@ namespace GraphSearches {
 	}
 
 	public partial class DirectedWeightedGraph {
-		private Dictionary< Vertex, List<Edge> > adjacencyList = new Dictionary< Vertex, List<Edge> >();
+		public Dictionary< Vertex, List<Edge> > adjacencyList = new Dictionary< Vertex, List<Edge> >();
 
 		public DirectedWeightedGraph(string filePath) {
 			foreach (string line in File.ReadLines(filePath)) {
@@ -57,6 +57,9 @@ namespace GraphSearches {
 		}
 
 		public void AddEdge(Vertex source, Edge connection) {
+			if (!adjacencyList.ContainsKey(connection.Destination))
+				AddVertex(connection.Destination);
+
 			adjacencyList[source].Add(connection);
 		}
 
