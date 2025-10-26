@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace GraphSearches {
        public partial class DirectedWeightedGraph {
-		public (List<Vertex> path, int steps, long timeMs, int totalCost) DepthFirstSearch(Vertex firstVertex, Vertex lastVertex, string outputFilePath) {
+		public void DepthFirstSearch(Vertex firstVertex, Vertex lastVertex, string outputFilePath) {
 			if (!adjacencyList.ContainsKey(firstVertex))
 				throw new ArgumentException("Start vertex not found.");
 			if (!adjacencyList.ContainsKey(lastVertex))
@@ -45,7 +45,8 @@ namespace GraphSearches {
 						writer.WriteLine($"Execution Time (ms): {stopwatch.ElapsedMilliseconds}");
 					}
 
-					return (path, steps, stopwatch.ElapsedMilliseconds, cost);
+					return;
+
 				}
 
 				foreach (Edge edge in GetNeighbors(current)) {
@@ -62,8 +63,6 @@ namespace GraphSearches {
 			using (StreamWriter writer = new StreamWriter(outputFilePath)) {
 				writer.WriteLine("Program did not reach target vertex.");
 			}
-
-			return (new List<Vertex>(), steps, stopwatch.ElapsedMilliseconds, totalCost);
 		}
 	}
 }
