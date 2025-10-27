@@ -64,5 +64,16 @@ namespace GraphSearches {
 				writer.WriteLine("Program did not reach target vertex.");
 			}
 		}
+
+		public void BreadthFirstSearch() {
+
+		}
+
+		public void Dijkstras() {
+
+		}
+
+
+
 	}
 }
