@@ -1,0 +1,31 @@
+BFS Travel Path:
+sly spider
+fabled ant
+gentle iguana
+scarlet leopard
+polished kite
+shire eagle
+cobalt porcupine
+plucky ant
+flinty koala
+curious eagle
+cobalt anteater
+plucky koala
+breezy trout
+velvet python
+ember donkey
+breezy elk
+sly cricket
+nimble crow
+brave weasel
+dusky badger
+tidy cat
+misty cricket
+shire boar
+urban heron
+cotton borzoi
+granite firefly
+Path: sly spider -> fabled ant -> shire eagle -> plucky koala -> brave weasel -> granite firefly
+Steps: 26
+Total Cost: 81
+Execution Time (ms): 0

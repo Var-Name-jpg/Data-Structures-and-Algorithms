@@ -22,6 +22,10 @@ namespace GraphSearches {
 			graph100.DepthFirstSearch(startVert100, lastVert100, "output-files/DFS-Search-100.txt");
 			graph1k.DepthFirstSearch(startVert1k, lastVert1k, "output-files/DFS-Search-1k.txt");
 			graph10k.DepthFirstSearch(startVert10k, lastVert10k, "output-files/DFS-Search-10k.txt");
+			
+			graph100.BreadthFirstSearch(startVert100, lastVert100, "output-files/BFS-Search-100.txt");
+			graph1k.BreadthFirstSearch(startVert1k, lastVert1k, "output-files/BFS-Search-1k.txt");
+			graph10k.BreadthFirstSearch(startVert10k, lastVert10k, "output-files/BFS-Search-10k.txt");
 		}
 	}
 }

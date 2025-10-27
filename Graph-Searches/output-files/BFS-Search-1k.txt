@@ -1,0 +1,32 @@
+BFS Travel Path:
+scarlet kite
+crisp cat
+thistle koala
+ashen sturgeon
+leather seal
+tidy crow
+rusty owl
+thistle monitor
+ashen hedgehog
+witty gator
+timber rat
+tidy hippo
+tropic firefly
+dapper anteater
+jade dragonfly
+blithe dolphin
+silver raven
+onyx owl
+silent zebra
+crimson magpie
+frosty ibis
+brisk skink
+pearl bee
+iron sparrow
+witty toad
+cobalt yak
+glossy crane
+Path: scarlet kite -> crisp cat -> ashen sturgeon -> tidy crow -> thistle monitor -> tidy hippo -> blithe dolphin -> crimson magpie -> glossy crane
+Steps: 27
+Total Cost: 82
+Execution Time (ms): 0

@@ -25,4 +25,4 @@ granite firefly
 Final Path: sly spider -> scarlet leopard -> flinty koala -> breezy elk -> cobalt porcupine -> breezy trout -> tidy cat -> snug alpaca -> misty cricket -> sunny sparrow -> silken moose -> dusky donkey -> gentle iguana -> plucky ant -> ember donkey -> shire boar -> maple ram -> shire eagle -> plucky koala -> brave weasel -> granite firefly
 Number of Steps: 22
 Total Cost: 164
-Execution Time (ms): 4
+Execution Time (ms): 1
