@@ -28,4 +28,4 @@ granite firefly
 Path: sly spider -> fabled ant -> shire eagle -> plucky koala -> brave weasel -> granite firefly
 Steps: 26
 Total Cost: 81
-Execution Time (ms): 0
+Execution Time (ms): 1

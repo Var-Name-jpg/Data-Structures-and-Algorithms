@@ -1,0 +1,28 @@
+Dijkstra's Travel Path:
+verdant buffalo
+arctic skink
+keen elk
+amberine capybara
+whimsical panther
+arcane lynx
+leather cat
+velvet dog
+cozy ram
+cerulean gecko
+spry orca
+lilac capybara
+spry trout
+misty jaguar
+shire stoat
+copper weasel
+bronze ferret
+brisk elk
+charming badger
+verdant monitor
+noble otterhound
+ambered capybara
+vivid horse
+Path: verdant buffalo -> arctic skink -> keen elk -> amberine capybara -> whimsical panther -> arcane lynx -> leather cat -> velvet dog -> cozy ram -> cerulean gecko -> spry orca -> lilac capybara -> spry trout -> misty jaguar -> shire stoat -> copper weasel -> bronze ferret -> brisk elk -> charming badger -> verdant monitor -> noble otterhound -> ambered capybara -> vivid horse
+Steps: 1888
+Total Cost: 191
+Execution Time (ms): 17

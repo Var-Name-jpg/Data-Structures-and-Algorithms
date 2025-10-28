@@ -3108,4 +3108,4 @@ vivid horse
 Path: verdant buffalo -> arctic skink -> nimble horse -> curious turtle -> timber rhino -> sunny marmot -> breezy monitor -> feathered butterfly -> lilac bison -> bold dolphin -> pearl python -> whimsical deer -> pearl marmot -> timber lynx -> stout llama -> vivid owl -> iron magpie -> solar alpaca -> urban ibis -> fuzzy heron -> dusky marmot -> vivid horse
 Steps: 3193
 Total Cost: 228
-Execution Time (ms): 4
+Execution Time (ms): 10

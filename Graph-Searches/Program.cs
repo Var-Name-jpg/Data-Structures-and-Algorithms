@@ -26,6 +26,10 @@ namespace GraphSearches {
 			graph100.BreadthFirstSearch(startVert100, lastVert100, "output-files/BFS-Search-100.txt");
 			graph1k.BreadthFirstSearch(startVert1k, lastVert1k, "output-files/BFS-Search-1k.txt");
 			graph10k.BreadthFirstSearch(startVert10k, lastVert10k, "output-files/BFS-Search-10k.txt");
+			
+			graph100.Dijkstras(startVert100, lastVert100, "output-files/Dijkstras-Search-100.txt");
+			graph1k.Dijkstras(startVert1k, lastVert1k, "output-files/Dijkstras-Search-1k.txt");
+			graph10k.Dijkstras(startVert10k, lastVert10k, "output-files/Dijkstras-Search-10k.txt");
 		}
 	}
 }

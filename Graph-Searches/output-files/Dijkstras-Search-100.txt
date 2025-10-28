@@ -1,0 +1,15 @@
+Dijkstra's Travel Path:
+sly spider
+gentle iguana
+plucky ant
+ember donkey
+shire boar
+maple ram
+shire eagle
+plucky koala
+brave weasel
+granite firefly
+Path: sly spider -> gentle iguana -> plucky ant -> ember donkey -> shire boar -> maple ram -> shire eagle -> plucky koala -> brave weasel -> granite firefly
+Steps: 41
+Total Cost: 62
+Execution Time (ms): 11

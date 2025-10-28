@@ -119,5 +119,69 @@ namespace GraphSearches {
 				writer.WriteLine("Program did not reach target vertex");
 
 		}
+
+		public void Dijkstras(Vertex firstVertex, Vertex lastVertex, string outputFilePath) {
+			if (!adjacencyList.ContainsKey(firstVertex))
+				throw new ArgumentException("Start vertex not found.");
+			if (!adjacencyList.ContainsKey(lastVertex))
+				throw new ArgumentException("Last vertex not found.");
+
+			Stopwatch stopwatch = new Stopwatch();
+			stopwatch.Start();
+
+			var distance = new Dictionary<Vertex, int>();
+			var previous = new Dictionary<Vertex, Vertex>();
+			var visited = new HashSet<Vertex>();
+			var pq = new SortedSet<(int cost, Vertex vertex)>(Comparer<(int, Vertex)>.Create((a, b) => a.Item1 == b.Item1 ? a.Item2.Id.CompareTo(b.Item2.Id) : a.Item1 - b.Item1));
+
+			foreach (var v in adjacencyList.Keys)
+				distance[v] = int.MaxValue;
+			distance[firstVertex] = 0;
+			pq.Add((0, firstVertex));
+
+			int steps = 0;
+
+			while (pq.Count > 0) {
+				var (cost, current) = pq.Min;
+				pq.Remove(pq.Min);
+
+				if (visited.Contains(current))
+					continue;
+				visited.Add(current);
+				steps++;
+
+				if (current.Equals(lastVertex)) {
+					stopwatch.Stop();
+					var path = new List<Vertex>();
+					for (var v = lastVertex; v != null; v = previous.ContainsKey(v) ? previous[v] : null)
+						path.Add(v);
+					path.Reverse();
+
+					using (StreamWriter writer = new StreamWriter(outputFilePath)) {
+						writer.WriteLine("Dijkstra's Travel Path:");
+						foreach (var v in path)
+							writer.WriteLine(v.Id);
+						writer.WriteLine("Path: " + string.Join(" -> ", path.ConvertAll(v => v.Id)));
+						writer.WriteLine($"Steps: {steps}");
+						writer.WriteLine($"Total Cost: {cost}");
+						writer.WriteLine($"Execution Time (ms): {stopwatch.ElapsedMilliseconds}");
+					}
+
+					return;
+				}
+
+				foreach (var edge in GetNeighbors(current)) {
+					int newCost = cost + edge.Weight;
+					if (newCost < distance[edge.Destination]) {
+						distance[edge.Destination] = newCost;
+						previous[edge.Destination] = current;
+						pq.Add((newCost, edge.Destination));
+					}
+				}
+			}
+
+			using (StreamWriter writer = new StreamWriter(outputFilePath))
+				writer.WriteLine("Program did not reach target vertex.");
+		}
 	}
 }

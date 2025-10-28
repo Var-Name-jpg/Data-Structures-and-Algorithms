@@ -1,0 +1,14 @@
+Dijkstra's Travel Path:
+scarlet kite
+crisp cat
+ashen sturgeon
+tidy crow
+thistle monitor
+tidy hippo
+blithe dolphin
+crimson magpie
+glossy crane
+Path: scarlet kite -> crisp cat -> ashen sturgeon -> tidy crow -> thistle monitor -> tidy hippo -> blithe dolphin -> crimson magpie -> glossy crane
+Steps: 32
+Total Cost: 82
+Execution Time (ms): 0
